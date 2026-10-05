@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live · Who's in the room · Launchcamp AI Edition</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300..700&display=swap" rel="stylesheet">
+<style>
+  /* Projector view of the opening round: refreshes every 3 s. Built by scripts/build-kit.py
+     into launchcamp-kit/live/results.html (<svg viewBox="0 0 35 35" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<g>
+		<rect x="0" y="0" width="35" height="35" fill="#ffffff"/>
+		<path style="stroke:#000000" transform="translate(1,1.5)" d="M0,0h1M1,0h1M2,0h1M3,0h1M4,0h1M5,0h1M6,0h1M14,0h1M15,0h1M16,0h1M18,0h1M19,0h1M21,0h1M23,0h1M26,0h1M27,0h1M28,0h1M29,0h1M30,0h1M31,0h1M32,0h1M0,1h1M6,1h1M9,1h1M15,1h1M17,1h1M20,1h1M21,1h1M23,1h1M24,1h1M26,1h1M32,1h1M0,2h1M2,2h1M3,2h1M4,2h1M6,2h1M9,2h1M10,2h1M12,2h1M14,2h1M15,2h1M17,2h1M19,2h1M20,2h1M22,2h1M23,2h1M24,2h1M26,2h1M28,2h1M29,2h1M30,2h1M32,2h1M0,3h1M2,3h1M3,3h1M4,3h1M6,3h1M9,3h1M10,3h1M12,3h1M13,3h1M17,3h1M19,3h1M22,3h1M23,3h1M26,3h1M28,3h1M29,3h1M30,3h1M32,3h1M0,4h1M2,4h1M3,4h1M4,4h1M6,4h1M10,4h1M11,4h1M12,4h1M16,4h1M17,4h1M19,4h1M23,4h1M26,4h1M28,4h1M29,4h1M30,4h1M32,4h1M0,5h1M6,5h1M8,5h1M9,5h1M10,5h1M11,5h1M20,5h1M24,5h1M26,5h1M32,5h1M0,6h1M1,6h1M2,6h1M3,6h1M4,6h1M5,6h1M6,6h1M8,6h1M10,6h1M12,6h1M14,6h1M16,6h1M18,6h1M20,6h1M22,6h1M24,6h1M26,6h1M27,6h1M28,6h1M29,6h1M30,6h1M31,6h1M32,6h1M11,7h1M14,7h1M17,7h1M18,7h1M19,7h1M20,7h1M21,7h1M22,7h1M24,7h1M0,8h1M3,8h1M5,8h1M6,8h1M8,8h1M9,8h1M12,8h1M13,8h1M14,8h1M15,8h1M16,8h1M19,8h1M21,8h1M24,8h1M25,8h1M27,8h1M1,9h1M5,9h1M7,9h1M9,9h1M12,9h1M16,9h1M18,9h1M20,9h1M24,9h1M25,9h1M26,9h1M27,9h1M31,9h1M32,9h1M0,10h1M1,10h1M5,10h1M6,10h1M7,10h1M8,10h1M9,10h1M10,10h1M16,10h1M17,10h1M19,10h1M20,10h1M24,10h1M27,10h1M28,10h1M30,10h1M32,10h1M1,11h1M2,11h1M4,11h1M5,11h1M7,11h1M10,11h1M11,11h1M14,11h1M15,11h1M17,11h1M21,11h1M22,11h1M26,11h1M28,11h1M29,11h1M32,11h1M0,12h1M1,12h1M2,12h1M5,12h1M6,12h1M7,12h1M8,12h1M11,12h1M12,12h1M15,12h1M19,12h1M21,12h1M24,12h1M25,12h1M26,12h1M29,12h1M31,12h1M32,12h1M0,13h1M5,13h1M8,13h1M9,13h1M10,13h1M13,13h1M15,13h1M16,13h1M17,13h1M21,13h1M25,13h1M26,13h1M28,13h1M30,13h1M31,13h1M32,13h1M0,14h1M1,14h1M3,14h1M4,14h1M5,14h1M6,14h1M7,14h1M8,14h1M9,14h1M10,14h1M11,14h1M12,14h1M13,14h1M17,14h1M20,14h1M23,14h1M25,14h1M26,14h1M27,14h1M28,14h1M29,14h1M31,14h1M0,15h1M5,15h1M7,15h1M14,15h1M15,15h1M17,15h1M19,15h1M21,15h1M23,15h1M26,15h1M27,15h1M31,15h1M0,16h1M1,16h1M4,16h1M6,16h1M7,16h1M8,16h1M9,16h1M10,16h1M11,16h1M13,16h1M17,16h1M19,16h1M20,16h1M21,16h1M22,16h1M23,16h1M26,16h1M28,16h1M31,16h1M1,17h1M4,17h1M5,17h1M8,17h1M10,17h1M11,17h1M12,17h1M13,17h1M16,17h1M20,17h1M21,17h1M23,17h1M24,17h1M25,17h1M27,17h1M29,17h1M0,18h1M3,18h1M6,18h1M9,18h1M10,18h1M14,18h1M16,18h1M18,18h1M20,18h1M21,18h1M26,18h1M30,18h1M31,18h1M32,18h1M0,19h1M4,19h1M7,19h1M9,19h1M10,19h1M12,19h1M13,19h1M17,19h1M18,19h1M20,19h1M21,19h1M22,19h1M27,19h1M31,19h1M6,20h1M8,20h1M10,20h1M11,20h1M14,20h1M15,20h1M16,20h1M17,20h1M18,20h1M21,20h1M23,20h1M24,20h1M2,21h1M4,21h1M5,21h1M7,21h1M8,21h1M10,21h1M11,21h1M12,21h1M15,21h1M16,21h1M18,21h1M19,21h1M20,21h1M21,21h1M24,21h1M25,21h1M26,21h1M29,21h1M31,21h1M32,21h1M0,22h1M1,22h1M4,22h1M6,22h1M7,22h1M9,22h1M11,22h1M14,22h1M15,22h1M18,22h1M20,22h1M25,22h1M26,22h1M27,22h1M28,22h1M29,22h1M32,22h1M1,23h1M2,23h1M3,23h1M4,23h1M7,23h1M11,23h1M12,23h1M16,23h1M21,23h1M22,23h1M27,23h1M29,23h1M32,23h1M0,24h1M4,24h1M5,24h1M6,24h1M8,24h1M11,24h1M13,24h1M15,24h1M16,24h1M17,24h1M19,24h1M20,24h1M21,24h1M24,24h1M25,24h1M26,24h1M27,24h1M28,24h1M32,24h1M8,25h1M9,25h1M13,25h1M14,25h1M16,25h1M18,25h1M19,25h1M20,25h1M21,25h1M24,25h1M28,25h1M29,25h1M32,25h1M0,26h1M1,26h1M2,26h1M3,26h1M4,26h1M5,26h1M6,26h1M10,26h1M12,26h1M14,26h1M16,26h1M20,26h1M24,26h1M26,26h1M28,26h1M29,26h1M30,26h1M31,26h1M0,27h1M6,27h1M8,27h1M9,27h1M12,27h1M13,27h1M14,27h1M19,27h1M21,27h1M22,27h1M24,27h1M28,27h1M31,27h1M0,28h1M2,28h1M3,28h1M4,28h1M6,28h1M10,28h1M11,28h1M12,28h1M13,28h1M14,28h1M16,28h1M20,28h1M21,28h1M24,28h1M25,28h1M26,28h1M27,28h1M28,28h1M29,28h1M0,29h1M2,29h1M3,29h1M4,29h1M6,29h1M8,29h1M9,29h1M10,29h1M13,29h1M14,29h1M15,29h1M19,29h1M20,29h1M21,29h1M23,29h1M26,29h1M28,29h1M30,29h1M0,30h1M2,30h1M3,30h1M4,30h1M6,30h1M21,30h1M24,30h1M28,30h1M30,30h1M32,30h1M0,31h1M6,31h1M11,31h1M14,31h1M15,31h1M16,31h1M17,31h1M18,31h1M19,31h1M20,31h1M21,31h1M22,31h1M23,31h1M24,31h1M25,31h1M26,31h1M0,32h1M1,32h1M2,32h1M3,32h1M4,32h1M5,32h1M6,32h1M8,32h1M10,32h1M12,32h1M13,32h1M16,32h1M19,32h1M21,32h1M24,32h1M25,32h1M28,32h1M29,32h1M31,32h1"/>
+	</g>
+</svg> = QR of the form). ?api=… overrides the base. */
+  :root{--ink:#fff;--muted:#a9a9b3;--purple:#9D74DE;--purple-lt:#C4ABF2;--green:#03FFA6;--coral:#FF5C6C;
+    --font:'Sora',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{font-family:var(--font);color:var(--ink);background:radial-gradient(ellipse 85% 75% at 50% 112%,#5d5d5d 0%,#343434 42%,#232323 72%,#1e1e1e 100%);
+       min-height:100vh;padding:3vh 3.2vw;display:grid;grid-template-rows:auto 1fr;gap:2.6vh;}
+  .top{display:flex;align-items:center;gap:2vw;}
+  .top h1{font-size:clamp(24px,3.2vw,46px);letter-spacing:-.8px;line-height:1.05;flex:1;}
+  .top h1 span{color:var(--purple);}
+  .qr{background:#fff;border-radius:12px;padding:8px 8px 5px;text-align:center;flex:none;}
+  .qr svg{width:clamp(90px,9vw,150px);height:clamp(90px,9vw,150px);display:block;}
+  .qr div{font-size:11px;color:#333;margin-top:3px;}
+  .grid{display:grid;grid-template-columns:1fr 1.25fr;gap:2.4vw;min-height:0;}
+  .col{display:grid;gap:2.2vh;align-content:start;}
+  .lbl{font-size:clamp(11px,.95vw,14px);letter-spacing:3px;text-transform:uppercase;color:var(--purple-lt);font-weight:600;margin-bottom:1vh;display:flex;gap:10px;align-items:center;}
+  .lbl::before{content:"";width:24px;height:3px;background:var(--purple);border-radius:2px;}
+  .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:1vw;}
+  .role{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:1.6vh 1vw;}
+  .role b{display:block;font-size:clamp(30px,4.2vw,64px);line-height:1;color:var(--purple);font-variant-numeric:tabular-nums;}
+  .role:nth-child(2) b{color:var(--green);} .role:nth-child(3) b{color:#fff;}
+  .role span{font-size:clamp(11px,1vw,15px);color:#ddd;}
+  .bar{display:grid;grid-template-columns:clamp(150px,15vw,250px) 1fr 3ch;gap:12px;align-items:center;margin:.9vh 0;font-size:clamp(12px,1.05vw,16px);color:#e8e6ee;}
+  .bar i{display:block;height:clamp(12px,1.5vh,18px);border-radius:6px;background:var(--purple);min-width:4px;transition:width .6s;}
+  .bar.g i{background:var(--green);} .bar.r i{background:var(--coral);}
+  .bar b{text-align:right;font-variant-numeric:tabular-nums;}
+  .wall{columns:2;column-gap:1.2vw;}
+  .quote{break-inside:avoid;background:#fff;color:#222;border-radius:12px;padding:1.4vh 1vw;margin-bottom:1.2vw;font-size:clamp(13px,1.15vw,19px);line-height:1.35;border-left:5px solid var(--purple);}
+  .quote.leader{border-left-color:#00865A;} .quote.investor{border-left-color:#222;}
+  .quote small{display:block;margin-top:.6vh;font-size:clamp(10px,.8vw,12px);letter-spacing:1.2px;text-transform:uppercase;color:#777;}
+  .empty{color:var(--muted);font-size:clamp(14px,1.2vw,18px);}
+  @media (max-width:900px){ .grid{grid-template-columns:1fr;} .wall{columns:1;} .top{flex-wrap:wrap;} }
+  .off{position:fixed;bottom:10px;right:14px;font-size:12px;color:var(--coral);display:none;}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>Who's in the room · <span id="n">0</span> answers</h1>
+  <div class="qr"><svg viewBox="0 0 35 35" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<g>
+		<rect x="0" y="0" width="35" height="35" fill="#ffffff"/>
+		<path style="stroke:#000000" transform="translate(1,1.5)" d="M0,0h1M1,0h1M2,0h1M3,0h1M4,0h1M5,0h1M6,0h1M14,0h1M15,0h1M16,0h1M18,0h1M19,0h1M21,0h1M23,0h1M26,0h1M27,0h1M28,0h1M29,0h1M30,0h1M31,0h1M32,0h1M0,1h1M6,1h1M9,1h1M15,1h1M17,1h1M20,1h1M21,1h1M23,1h1M24,1h1M26,1h1M32,1h1M0,2h1M2,2h1M3,2h1M4,2h1M6,2h1M9,2h1M10,2h1M12,2h1M14,2h1M15,2h1M17,2h1M19,2h1M20,2h1M22,2h1M23,2h1M24,2h1M26,2h1M28,2h1M29,2h1M30,2h1M32,2h1M0,3h1M2,3h1M3,3h1M4,3h1M6,3h1M9,3h1M10,3h1M12,3h1M13,3h1M17,3h1M19,3h1M22,3h1M23,3h1M26,3h1M28,3h1M29,3h1M30,3h1M32,3h1M0,4h1M2,4h1M3,4h1M4,4h1M6,4h1M10,4h1M11,4h1M12,4h1M16,4h1M17,4h1M19,4h1M23,4h1M26,4h1M28,4h1M29,4h1M30,4h1M32,4h1M0,5h1M6,5h1M8,5h1M9,5h1M10,5h1M11,5h1M20,5h1M24,5h1M26,5h1M32,5h1M0,6h1M1,6h1M2,6h1M3,6h1M4,6h1M5,6h1M6,6h1M8,6h1M10,6h1M12,6h1M14,6h1M16,6h1M18,6h1M20,6h1M22,6h1M24,6h1M26,6h1M27,6h1M28,6h1M29,6h1M30,6h1M31,6h1M32,6h1M11,7h1M14,7h1M17,7h1M18,7h1M19,7h1M20,7h1M21,7h1M22,7h1M24,7h1M0,8h1M3,8h1M5,8h1M6,8h1M8,8h1M9,8h1M12,8h1M13,8h1M14,8h1M15,8h1M16,8h1M19,8h1M21,8h1M24,8h1M25,8h1M27,8h1M1,9h1M5,9h1M7,9h1M9,9h1M12,9h1M16,9h1M18,9h1M20,9h1M24,9h1M25,9h1M26,9h1M27,9h1M31,9h1M32,9h1M0,10h1M1,10h1M5,10h1M6,10h1M7,10h1M8,10h1M9,10h1M10,10h1M16,10h1M17,10h1M19,10h1M20,10h1M24,10h1M27,10h1M28,10h1M30,10h1M32,10h1M1,11h1M2,11h1M4,11h1M5,11h1M7,11h1M10,11h1M11,11h1M14,11h1M15,11h1M17,11h1M21,11h1M22,11h1M26,11h1M28,11h1M29,11h1M32,11h1M0,12h1M1,12h1M2,12h1M5,12h1M6,12h1M7,12h1M8,12h1M11,12h1M12,12h1M15,12h1M19,12h1M21,12h1M24,12h1M25,12h1M26,12h1M29,12h1M31,12h1M32,12h1M0,13h1M5,13h1M8,13h1M9,13h1M10,13h1M13,13h1M15,13h1M16,13h1M17,13h1M21,13h1M25,13h1M26,13h1M28,13h1M30,13h1M31,13h1M32,13h1M0,14h1M1,14h1M3,14h1M4,14h1M5,14h1M6,14h1M7,14h1M8,14h1M9,14h1M10,14h1M11,14h1M12,14h1M13,14h1M17,14h1M20,14h1M23,14h1M25,14h1M26,14h1M27,14h1M28,14h1M29,14h1M31,14h1M0,15h1M5,15h1M7,15h1M14,15h1M15,15h1M17,15h1M19,15h1M21,15h1M23,15h1M26,15h1M27,15h1M31,15h1M0,16h1M1,16h1M4,16h1M6,16h1M7,16h1M8,16h1M9,16h1M10,16h1M11,16h1M13,16h1M17,16h1M19,16h1M20,16h1M21,16h1M22,16h1M23,16h1M26,16h1M28,16h1M31,16h1M1,17h1M4,17h1M5,17h1M8,17h1M10,17h1M11,17h1M12,17h1M13,17h1M16,17h1M20,17h1M21,17h1M23,17h1M24,17h1M25,17h1M27,17h1M29,17h1M0,18h1M3,18h1M6,18h1M9,18h1M10,18h1M14,18h1M16,18h1M18,18h1M20,18h1M21,18h1M26,18h1M30,18h1M31,18h1M32,18h1M0,19h1M4,19h1M7,19h1M9,19h1M10,19h1M12,19h1M13,19h1M17,19h1M18,19h1M20,19h1M21,19h1M22,19h1M27,19h1M31,19h1M6,20h1M8,20h1M10,20h1M11,20h1M14,20h1M15,20h1M16,20h1M17,20h1M18,20h1M21,20h1M23,20h1M24,20h1M2,21h1M4,21h1M5,21h1M7,21h1M8,21h1M10,21h1M11,21h1M12,21h1M15,21h1M16,21h1M18,21h1M19,21h1M20,21h1M21,21h1M24,21h1M25,21h1M26,21h1M29,21h1M31,21h1M32,21h1M0,22h1M1,22h1M4,22h1M6,22h1M7,22h1M9,22h1M11,22h1M14,22h1M15,22h1M18,22h1M20,22h1M25,22h1M26,22h1M27,22h1M28,22h1M29,22h1M32,22h1M1,23h1M2,23h1M3,23h1M4,23h1M7,23h1M11,23h1M12,23h1M16,23h1M21,23h1M22,23h1M27,23h1M29,23h1M32,23h1M0,24h1M4,24h1M5,24h1M6,24h1M8,24h1M11,24h1M13,24h1M15,24h1M16,24h1M17,24h1M19,24h1M20,24h1M21,24h1M24,24h1M25,24h1M26,24h1M27,24h1M28,24h1M32,24h1M8,25h1M9,25h1M13,25h1M14,25h1M16,25h1M18,25h1M19,25h1M20,25h1M21,25h1M24,25h1M28,25h1M29,25h1M32,25h1M0,26h1M1,26h1M2,26h1M3,26h1M4,26h1M5,26h1M6,26h1M10,26h1M12,26h1M14,26h1M16,26h1M20,26h1M24,26h1M26,26h1M28,26h1M29,26h1M30,26h1M31,26h1M0,27h1M6,27h1M8,27h1M9,27h1M12,27h1M13,27h1M14,27h1M19,27h1M21,27h1M22,27h1M24,27h1M28,27h1M31,27h1M0,28h1M2,28h1M3,28h1M4,28h1M6,28h1M10,28h1M11,28h1M12,28h1M13,28h1M14,28h1M16,28h1M20,28h1M21,28h1M24,28h1M25,28h1M26,28h1M27,28h1M28,28h1M29,28h1M0,29h1M2,29h1M3,29h1M4,29h1M6,29h1M8,29h1M9,29h1M10,29h1M13,29h1M14,29h1M15,29h1M19,29h1M20,29h1M21,29h1M23,29h1M26,29h1M28,29h1M30,29h1M0,30h1M2,30h1M3,30h1M4,30h1M6,30h1M21,30h1M24,30h1M28,30h1M30,30h1M32,30h1M0,31h1M6,31h1M11,31h1M14,31h1M15,31h1M16,31h1M17,31h1M18,31h1M19,31h1M20,31h1M21,31h1M22,31h1M23,31h1M24,31h1M25,31h1M26,31h1M0,32h1M1,32h1M2,32h1M3,32h1M4,32h1M5,32h1M6,32h1M8,32h1M10,32h1M12,32h1M13,32h1M16,32h1M19,32h1M21,32h1M24,32h1M25,32h1M28,32h1M29,32h1M31,32h1"/>
+	</g>
+</svg><div>caspardavid.github.io/launchcamp-ai/live</div></div>
+</div>
+<div class="grid">
+  <div class="col">
+    <div><div class="lbl">You are</div>
+      <div class="roles">
+        <div class="role"><b id="r-founder">0</b><span>Founders &amp; builders</span></div>
+        <div class="role"><b id="r-leader">0</b><span>Leaders &amp; operators</span></div>
+        <div class="role"><b id="r-investor">0</b><span>Investors &amp; ecosystem</span></div>
+      </div></div>
+    <div><div class="lbl">Your AI agents</div><div id="agents"></div></div>
+    <div><div class="lbl">This morning you build with</div><div id="tracks"></div></div>
+  </div>
+  <div><div class="lbl">If AI could take one thing off my plate…</div><div class="wall" id="wall"><p class="empty">Waiting for the first answers…</p></div></div>
+</div>
+<div class="off" id="off">offline · retrying</div>
+
+<script>
+(function(){
+  var API = (new URLSearchParams(location.search).get('api')) || 'https://smartai.threshlds.co/api/launchcamp';
+  var ROLE = {founder:'Founder', leader:'Leader', investor:'Investor'};
+  function esc(s){ var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+  function bars(rows, max){
+    return rows.map(function(r){ return '<div class="bar '+(r[2]||'')+'"><span>'+r[0]+'</span><i style="width:'+(max ? r[1]/max*100 : 0)+'%"></i><b>'+r[1]+'</b></div>'; }).join('');
+  }
+  function draw(d){
+    document.getElementById('n').textContent = d.n;
+    ['founder','leader','investor'].forEach(function(k){ document.getElementById('r-'+k).textContent = d.ruolo[k]; });
+    var a = d.agenti, built = a.test + a.prod + a.measured, prod = a.prod + a.measured;
+    document.getElementById('agents').innerHTML = bars([
+      ['None yet', a.none, ''], ['Built one', built, ''], ['One in production', prod, 'g'], ["Know how often it's wrong", a.measured, 'r']], d.n);
+    var t = d.track;
+    document.getElementById('tracks').innerHTML = bars([['Lovable', t.lovable, ''], ['Coding agent', t.code, 'g'], ['Not sure yet', t.unsure, '']], d.n);
+    if(d.piatti.length){
+      document.getElementById('wall').innerHTML = d.piatti.slice(0, 16).map(function(p){
+        return '<div class="quote '+p.ruolo+'">'+esc(p.piatto)+'<small>'+ROLE[p.ruolo]+'</small></div>'; }).join('');
+    }
+  }
+  function tick(){
+    fetch(API + '/results', {cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(d){ document.getElementById('off').style.display = 'none'; draw(d); })
+      .catch(function(){ document.getElementById('off').style.display = 'block'; });
+  }
+  tick(); setInterval(tick, 3000);
+})();
+</script>
+</body>
+</html>

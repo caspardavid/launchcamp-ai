@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who's in the room · Launchcamp AI Edition</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300..700&display=swap" rel="stylesheet">
+<style>
+  /* The opening round of Launchcamp AI Edition (5 Oct 2026): four questions on the phone,
+     answers straight onto the deck's slides 4–5 and live/results.html.
+     SOURCE FILE: scripts/build-kit.py writes it to launchcamp-kit/live/index.html.
+     Backend: /api/launchcamp/* on the SmartAI survey service (ten_m infra/smartai-survey).
+     Same pattern as the SmartAI "giro di sala" (ten_m site/sabato26). ?api=… overrides the base for testing. */
+  :root{--paper:#F4F4F7;--card:#fff;--ink:#222;--muted:#5F5F5F;--line:#D9D9E3;
+    --purple:#9D74DE;--purple-ink:#6A3FC0;--purple-bg:#EFE8FB;--green-ink:#00865A;--green-bg:#DFFBEF;
+    --font:'Sora',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--font);color:var(--ink);background:var(--paper);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  a{color:var(--purple-ink);}
+  .hero{background:radial-gradient(ellipse 90% 90% at 50% 120%,#5d5d5d 0%,#2f2f2f 45%,#1f1f1f 100%);color:#fff;padding:28px 20px 26px;text-align:center;}
+  .lockup{display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .lc{border:2px solid #fff;padding:5px 10px 4px;letter-spacing:4px;font-weight:600;font-size:13px;}
+  .ed{color:var(--purple);letter-spacing:6px;font-weight:300;font-size:14px;}
+  .hero h1{font-size:30px;margin-top:16px;letter-spacing:-.6px;line-height:1.1;}
+  .hero p{color:#d6d3e0;margin-top:8px;font-size:14.5px;}
+  main{max-width:620px;margin:0 auto;padding:18px 16px 40px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin-bottom:12px;}
+  .q{display:block;font-size:17px;font-weight:700;line-height:1.35;}
+  .hint{color:var(--muted);font-size:13.5px;margin-top:3px;}
+  .opts{display:grid;gap:8px;margin-top:12px;}
+  .opt{display:block;position:relative;}
+  .opt input{position:absolute;opacity:0;width:0;height:0;}
+  .opt span{display:block;border:2px solid var(--line);border-radius:12px;padding:11px 14px;font-size:15.5px;font-weight:600;cursor:pointer;background:#fff;transition:.12s;}
+  .opt span small{display:block;font-weight:400;font-size:13px;color:var(--muted);}
+  .opt input:checked + span{border-color:var(--purple);background:var(--purple-bg);color:var(--purple-ink);}
+  .opt input:focus-visible + span{outline:3px solid var(--purple);outline-offset:2px;}
+  textarea{width:100%;margin-top:10px;border:2px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;font-family:inherit;color:var(--ink);min-height:96px;resize:vertical;}
+  textarea:focus{outline:none;border-color:var(--purple);}
+  .btn{display:block;width:100%;border:0;border-radius:999px;padding:16px 22px;font-size:17px;font-weight:700;font-family:inherit;color:#fff;background:var(--purple-ink);cursor:pointer;text-align:center;text-decoration:none;}
+  .btn:disabled{opacity:.55;cursor:default;}
+  .btn.ghost{background:transparent;color:var(--purple-ink);border:2px solid var(--purple-ink);margin-top:10px;}
+  .err{display:none;background:#FFE9EB;border:1px solid #F5A3AB;color:#9B1C28;border-radius:12px;padding:12px 14px;font-size:14.5px;margin-bottom:12px;}
+  .done{text-align:center;}
+  .done .ok{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green-ink);}
+  .done h2{font-size:26px;margin:6px 0 6px;letter-spacing:-.4px;}
+  .mine{background:var(--purple-bg);border-radius:12px;padding:12px 14px;font-size:14.5px;margin-top:12px;text-align:left;}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:0 16px 28px;}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="lockup"><span class="lc">LAUNCHCAMP</span><span class="ed">AI EDITION</span></div>
+  <h1>Who's in the room</h1>
+  <p>Four questions, one minute. Anonymous. Your answers go straight onto the screen.</p>
+</header>
+<main>
+  <form id="f" autocomplete="off">
+    <div class="err" id="err"></div>
+    <div class="card">
+      <div class="q">You're mostly a…</div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="ruolo" value="founder" required><span>Founder or builder</span></label>
+        <label class="opt"><input type="radio" name="ruolo" value="leader"><span>Leader or operator</span></label>
+        <label class="opt"><input type="radio" name="ruolo" value="investor"><span>Investor or ecosystem</span></label>
+      </div>
+    </div>
+    <div class="card">
+      <div class="q">Your AI agents so far</div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="agenti" value="none" required><span>None yet</span></label>
+        <label class="opt"><input type="radio" name="agenti" value="test"><span>I've built one <small>it never left the test stage</small></span></label>
+        <label class="opt"><input type="radio" name="agenti" value="prod"><span>One is in production <small>but I couldn't say how often it's wrong</small></span></label>
+        <label class="opt"><input type="radio" name="agenti" value="measured"><span>One is in production <small>and I know how often it's wrong</small></span></label>
+      </div>
+    </div>
+    <div class="card">
+      <div class="q">This morning you'll build with…</div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="track" value="lovable" required><span>Lovable <small>no-code</small></span></label>
+        <label class="opt"><input type="radio" name="track" value="code"><span>A coding agent <small>Claude Code, Codex, Cursor…</small></span></label>
+        <label class="opt"><input type="radio" name="track" value="unsure"><span>Not sure yet</span></label>
+      </div>
+    </div>
+    <div class="card">
+      <label class="q" for="piatto">If AI could take one thing off your plate, it would be…</label>
+      <p class="hint">One line. It might become the process you build on this morning. No client names.</p>
+      <textarea id="piatto" name="piatto" maxlength="280" placeholder="e.g. writing the Monday report from three spreadsheets"></textarea>
+    </div>
+    <button class="btn" type="submit" id="send">Send to the screen →</button>
+  </form>
+
+  <div id="done" style="display:none">
+    <div class="card done">
+      <div class="ok">On the screen ✓</div>
+      <h2>Thanks. Look up.</h2>
+      <p>Your answers are on the slide now.</p>
+      <p class="mine" id="mine"></p>
+    </div>
+    <a class="btn" href="../prompts/">Open today's prompts →</a>
+    <a class="btn ghost" href="#" id="edit">Change my answers</a>
+  </div>
+</main>
+<footer>Launchcamp | AI Edition · Feat. House, Torino · 5 Oct 2026<br>Wifi: FEAT-Guest</footer>
+
+<script>
+(function(){
+  var API = (new URLSearchParams(location.search).get('api')) || 'https://smartai.threshlds.co/api/launchcamp';
+  var K = 'lc-ai-2026:live', mem = {};
+  function load(){ try{ var v = localStorage.getItem(K); if(v) return JSON.parse(v); }catch(e){} return mem; }
+  function save(o){ mem = o; try{ localStorage.setItem(K, JSON.stringify(o)); }catch(e){} }
+  function esc(s){ var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+  var st = load();
+  if(!st.cid){
+    st.cid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'c' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+    save(st);
+  }
+  var f = document.getElementById('f'), done = document.getElementById('done'), err = document.getElementById('err'), btn = document.getElementById('send');
+
+  function fill(a){
+    [].forEach.call(f.querySelectorAll('input[type=radio]'), function(r){ r.checked = (a[r.name] === r.value); });
+    f.piatto.value = a.piatto || '';
+  }
+  function showDone(){
+    f.style.display = 'none'; done.style.display = 'block';
+    document.getElementById('mine').innerHTML = st.sent.piatto
+      ? 'Your one thing: <b>«' + esc(st.sent.piatto) + '»</b>'
+      : 'You left the last question blank. <a href="#" id="add">Add your one thing</a>: it goes on slide 5.';
+    var add = document.getElementById('add');
+    if(add) add.addEventListener('click', edit);
+    window.scrollTo(0, 0);
+  }
+  function edit(e){ if(e) e.preventDefault(); fill(st.sent || {}); done.style.display = 'none'; f.style.display = 'block'; window.scrollTo(0, 0); }
+  document.getElementById('edit').addEventListener('click', edit);
+
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var pick = function(n){ return (f.querySelector('input[name=' + n + ']:checked') || {}).value; };
+    var body = { client_id: st.cid, ruolo: pick('ruolo'), agenti: pick('agenti'), track: pick('track'), piatto: f.piatto.value.trim() || null };
+    if(!body.ruolo || !body.agenti || !body.track){ err.textContent = 'One of the first three questions is still empty.'; err.style.display = 'block'; window.scrollTo(0, 0); return; }
+    err.style.display = 'none'; btn.disabled = true; btn.textContent = 'Sending…';
+    fetch(API + '/submit', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)})
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(){ st.sent = body; save(st); btn.disabled = false; btn.textContent = 'Send to the screen →'; showDone(); })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = 'Try again →';
+        err.textContent = "It didn't arrive. Check you're on the FEAT-Guest wifi and try again, or raise a hand.";
+        err.style.display = 'block'; window.scrollTo(0, 0);
+      });
+  });
+
+  if(st.sent) showDone();
+})();
+</script>
+</body>
+</html>
