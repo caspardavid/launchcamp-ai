@@ -102,7 +102,7 @@
     <a class="btn ghost" href="#" id="edit">Change my answers</a>
   </div>
 </main>
-<footer>Launchcamp | AI Edition · Feat. House, Torino · 5 Oct 2026<br>Wifi: FEAT-Guest</footer>
+<footer>Launchcamp | AI Edition · Feat. House, Torino · 5 Oct 2026<br>Wifi: Feat. House Guest</footer>
 
 <script>
 (function(){
@@ -145,7 +145,7 @@
       .then(function(){ st.sent = body; save(st); btn.disabled = false; btn.textContent = 'Send to the screen →'; showDone(); })
       .catch(function(){
         btn.disabled = false; btn.textContent = 'Try again →';
-        err.textContent = "It didn't arrive. Check you're on the FEAT-Guest wifi and try again, or raise a hand.";
+        err.textContent = "It didn't arrive. Check you're on the Feat. House Guest wifi and try again, or raise a hand.";
         err.style.display = 'block'; window.scrollTo(0, 0);
       });
   });
