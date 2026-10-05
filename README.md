@@ -2,6 +2,8 @@
 
 Templates from Launchcamp AI Edition (Feat. House, Torino, 5 Oct 2026). Live at **https://caspardavid.github.io/launchcamp-ai/**
 
+**[The prompts](prompts/)** — every prompt of the day, in order: fill the blanks, copy, paste.
+
 1. [Agent spec](1/) — Five lines that decide whether your agent can be built, and tested. Generates your starter prompt.
 2. [Eval sheet](2/) — Ten real cases, a pass rule for each, ✓ or ✗. Tallies itself, exports to CSV.
 3. [Process scoring grid](3/) — Score 5–8 processes on five criteria. Flags knock-outs and your top 3.
